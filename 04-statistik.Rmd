@@ -1,0 +1,19 @@
+# Statistik
+
+
+
+```{r ungeviz, echo=FALSE, warning=FALSE, message=FALSE}
+
+cacao %>% filter(location %in% c("Canada", "U.S.A.")) %>%
+  ggplot(aes(rating, location)) +
+  geom_point(
+    position = position_jitter(height = 0.3, width = 0.05), 
+    size = 0.4, color = "#0072B2", alpha = 1/2
+  ) +
+  geom_vpline(data = sampler(25, group = location), height = 0.6, color = "#D55E00") +
+  theme_bw() + 
+  # `.draw` is a generated column indicating the sample draw
+  transition_states(.draw, 1, 3)
+```
+
+
